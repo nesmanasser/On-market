@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "7d53c00c-3c2b-41f3-96af-66ca06338990",
+		"name": "On market",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11481004"
+	},
+	"item": [
+		{
+			"name": "all countries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time \", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"check data \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"common\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"unMember\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"languages\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"capital\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"status\");\r",
+							"  \r",
+							"    });\r",
+							"\r",
+							"\r",
+							"/*// console.log(result[0]);\r",
+							"for(let i = 0 ; i<result.length; i++){\r",
+							"    // console.log(result[i])\r",
+							"    if(result[i]['name']['common']){\r",
+							"    // console.log(result[i]['name']['common'])  \r",
+							"    }else {\r",
+							"        // console.log('No Country Name')\r",
+							"    }\r",
+							"}*/\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Link}}v3.1/all",
+					"host": [
+						"{{Link}}v3",
+						"1"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "specific code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time \", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"correct page data\", function () {\r",
+							"   pm.expect(pm.response.text()).to.not.be.eql(\"mm\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"per\");\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Link}}v3.1/alpha/{{code}}",
+					"host": [
+						"{{Link}}v3",
+						"1"
+					],
+					"path": [
+						"alpha",
+						"{{code}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Link",
+			"value": "https://restcountries.com/",
+			"type": "string"
+		},
+		{
+			"key": "code",
+			"value": "pe",
+			"type": "string"
+		},
+		{
+			"key": "code1",
+			"value": "per",
+			"type": "string"
+		},
+		{
+			"key": "code2",
+			"value": "pol",
+			"type": "string"
+		}
+	]
+}
